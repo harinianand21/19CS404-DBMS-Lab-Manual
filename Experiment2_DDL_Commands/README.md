@@ -241,6 +241,8 @@ ALTER TABLE Student_details ADD COLUMN mobilenumb number;
 **Output:**
 
 <img width="1273" height="322" alt="image" src="https://github.com/user-attachments/assets/fa335af7-3ee8-4110-bcc8-a5164d23d733" />
+**GRADES**
+<img width="1013" height="76" alt="image" src="https://github.com/user-attachments/assets/cf7905ef-348a-49eb-a7b1-d164bdc8b2da" />
 
 
 
