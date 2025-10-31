@@ -43,12 +43,6 @@ FlexiFit Gym wants a database to manage its members, trainers, and fitness progr
 |              |            |               |       |
 |              |            |               |       |
 
-### Assumptions
-- 
-- 
-- 
-
----
 
 # Scenario B: City Library Event & Book Lending System
 
@@ -85,12 +79,6 @@ The Central Library wants to manage book lending and cultural events.
 |              |            |               |       |
 |              |            |               |       |
 
-### Assumptions
-- 
-- 
-- 
-
----
 
 # Scenario C: Restaurant Table Reservation & Ordering
 
@@ -127,12 +115,7 @@ A popular restaurant wants to manage reservations, orders, and billing.
 |              |            |               |       |
 |              |            |               |       |
 
-### Assumptions
-- 
-- 
-- 
 
----
 
 ## Instructions for Students
 
