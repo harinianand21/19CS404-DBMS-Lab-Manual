@@ -1,9 +1,4 @@
 # Experiment 5: Subqueries and Views
-```
-Developed by;
-Name : Rajalakshmi R
-Reg No : 212223110037
-```
 
 ## AIM
 To study and implement subqueries and views.
