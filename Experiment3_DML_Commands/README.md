@@ -46,344 +46,165 @@ Used to retrieve records from a table.
 SELECT column1, column2 FROM table_name WHERE condition;
 ```
 **Question 1**
+--
+![image](https://github.com/user-attachments/assets/c4e1528c-df57-4948-b92b-393999033dbe)
 
-Write a SQL statement to update the product_name as 'Grapefruit' whose product_id is 4 in the products table.
-
-products table
-
----------------
-product_id
-product_name
-category_id
-availability
-
-#### Code:
-```
-UPDATE products
-SET product_name='Grapefruit'
-WHERE product_id=4
+**Program:**
+```sql
+DELETE FROM Doctors
+WHERE (specialization='Pediatrics' OR specialization='Cardiology')
+AND last_name='Brown';
 ```
 
 **Output:**
-![alt text](op1.png)
+
+![image](https://github.com/user-attachments/assets/c138c53c-eddb-4ed1-8bf9-87dd949919d6)
+
 
 **Question 2**
+---
+![image](https://github.com/user-attachments/assets/fdcfc8b9-1e00-46e7-ade0-a5a78cd0fb4e)
 
-Write a SQL statement to change the email column of employees table with 'Unavailable' for all employees in employees table.
-
-Employees table
-
----------------
-employee_id
-first_name
-last_name
-email
-phone_number
-hire_date
-job_id
-salary
-commission_pct
-manager_id
-department_id
- 
-
-For example:
-
-##### Test	
-SELECT EMPLOYEE_ID,FIRST_NAME,EMAIL FROM EMPLOYEES LIMIT 2;
-##### Result
-EMPLOYEE_ID  FIRST_NAME  EMAIL
------------  ----------  -----------
-100          Steven      Unavailable
-101          Neena       Unavailable
-
-#### Code:
-```
-UPDATE EMPLOYEES
-SET email='Unavailable';
+**Program:**
+```sql
+DELETE FROM Customer
+WHERE OPENING_AMT BETWEEN 4000 AND 6000;
 ```
 
 **Output:**
-![alt text](op2.png)
+
+![image](https://github.com/user-attachments/assets/a97d92f6-6b0a-40a7-9e03-02d0e507df5c)
+
 
 **Question 3**
+---
+![image](https://github.com/user-attachments/assets/ec4f3118-9615-4fda-87e5-50a27a712cb1)
 
-Decrease the reorder level by 30 percent where the product name contains 'cream' and quantity in stock is higher than reorder level in the products table.
-
-PRODUCTS TABLE
-
-name               type
------------------  ---------------
-product_id         INT
-product_name       VARCHAR(100)
-category           VARCHAR(50)
-cost_price         DECIMAL(10,2)
-sell_price         DECIMAL(10,2)
-reorder_lvl        INT
-quantity           INT
-supplier_id        INT
- 
-
-For example:
-
-##### Test	
-select changes();
-##### Result
-changes()
-----------
-3
-
-#### Code:
-```
-UPDATE products
-SET reorder_lvl=reorder_lvl*0.7
-WHERE product_name LIKE '%cream%'
-AND quantity>reorder_lvl;
+**Program:**
+```sql
+SELECT COUNT(*)
+FROM EmployeeInfo
+WHERE Department='HR';
 ```
 
 **Output:**
-![alt text](op3.png)
+
+![image](https://github.com/user-attachments/assets/bd47906f-8db3-4f5c-8e60-defe536b1c1a)
 
 **Question 4**
+---
+![image](https://github.com/user-attachments/assets/2b159c26-9e2d-4ee2-afe9-9b462ef35d4e)
 
-Write a SQL statement to Update the product_name to 'Premium Bread' whose product ID is 5 in the products table.
-
-Products table
-
----------------
-product_id
-product_name
-category
-cost_price
-sell_price
-reorder_lvl
-quantity
-supplier_id
-
-#### Code:
-```
-UPDATE Products 
-SET product_name='Premium Bread'
-WHERE product_id=5;
+**Program:**
+```sql
+SELECT ename,hiredate,JULIANDAY('2024-12-31')-JULIANDAY(hiredate) AS days_worked
+FROM emp;
 ```
 
 **Output:**
-![alt text](op4.png)
+
+![image](https://github.com/user-attachments/assets/48a283b5-61e5-4846-b03e-9eba01baf494)
+
 
 **Question 5**
+---
+![image](https://github.com/user-attachments/assets/2d1bd1d4-4f86-494d-b750-aa3a65c8a778)
 
-Write a SQL statement to increase the salary of employees under the department 40, 90 and 110 according to the company rules.
-
-Salary will be increased by 25% for the department 40, 15% for department 90 and 10% for the department 110 and the rest of the departments will remain same.
-
-Employees table
-
----------------
-employee_id
-first_name
-last_name
-email
-phone_number
-hire_date
-job_id
-salary
-commission_pct
-manager_id
-department_id
-For example:
-
-##### Test	
-SELECT EMPLOYEE_ID, FIRST_NAME, SALARY, PHONE_NUMBER, EMAIL, JOB_ID FROM EMPLOYEES LIMIT 10;
-##### Result
-EMPLOYEE_ID  FIRST_NAME  SALARY      PHONE_NUMBER  EMAIL       JOB_ID
------------  ----------  ----------  ------------  ----------  ----------
-100          Steven      27600       515.123.4567  SKING       AD_PRES
-101          Neena       19550       515.123.4568  NKOCHHAR    AD_VP
-102          Lex         19550       515.123.4569  LDEHAAN     AD_VP
-103          Alexander   9000        590.423.4567  AHUNOLD     IT_PROG
-104          Bruce       6000        590.423.4568  BERNST      IT_PROG
-105          David       4800        590.423.4569  DAUSTIN     IT_PROG
-106          Valli       4800        590.423.4560  VPATABAL    IT_PROG
-107          Diana       4200        590.423.5567  DLORENTZ    IT_PROG
-108          Nancy       12000       515.124.4569  NGREENBE    FI_MGR
-109          Daniel      9000        515.124.4169  DFAVIET     FI_ACCOUNT
-
-#### Code:
-```
-UPDATE Employees 
-SET salary=CASE
-    WHEN department_id=40 THEN ROUND(salary*1.25,0)
-    WHEN department_id=90 THEN ROUND(salary*1.15,0)
-    WHEN department_id=110 THEN ROUND(salary*1.1,0)
-    ELSE salary
-END;
+**Program:**
+```sql
+UPDATE sales
+SET sell_price= sell_price+3
+WHERE product_id IN (SELECT product_id
+                        FROM Products
+                        WHERE supplier_id=4);
 ```
 
 **Output:**
-![alt text](op5.png)
+
+![image](https://github.com/user-attachments/assets/043200f3-b64a-4929-8820-b17beff5c02f)
+
 
 **Question 6**
+---
+![image](https://github.com/user-attachments/assets/859f5f60-73be-4bae-9b8b-68d511c8f0d8)
 
-Write a SQL query to Delete customers from 'customer' table where 'CUST_COUNTRY' is neither 'India' nor 'USA'.
-
-Sample table: Customer
-
-+-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+  
-|CUST_CODE  | CUST_NAME   | CUST_CITY   | WORKING_AREA | CUST_COUNTRY | GRADE | OPENING_AMT | RECEIVE_AMT | PAYMENT_AMT |OUTSTANDING_AMT| PHONE_NO     | AGENT_CODE |
-+-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+
-| C00013    | Holmes      | London      | London       | UK           |     2 |     6000.00 |     5000.00 |     7000.00 |       4000.00 | BBBBBBB      | A003       |
-| C00001    | Micheal     | New York    | New York     | USA          |     2 |     3000.00 |     5000.00 |     2000.00 |       6000.00 | CCCCCCC      | A008       |
-| C00020    | Albert      | New York    | New York     | USA          |     3 |     5000.00 |     7000.00 |     6000.00 |       6000.00 | BBBBSBB      | A008       |
-For example:
-
-##### Test	
-select changes();
-##### Result
-changes()
-----------
-11
-
-#### Code:
-```
-DELETE FROM Customer
-WHERE CUST_COUNTRY NOT IN('India','USA')
+**Program:**
+```sql
+SELECT *
+FROM emp
+WHERE hiredate >= DATE('2024-09-01','-6 months');
 ```
 
 **Output:**
-![alt text](op6.png)
+
+![image](https://github.com/user-attachments/assets/91133ef7-b6a3-4579-9e96-4394b3ed3f5e)
+
 
 **Question 7**
+---
+![image](https://github.com/user-attachments/assets/d28c8320-380f-4caa-8365-51f0ad4f802e)
 
-Write a SQL query to remove rows from the table 'customer' with the following condition -
-
-1. 'cust_city' should begin with the letter 'L',
-
-Sample table: Customer
-
-+-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+  
-|CUST_CODE  | CUST_NAME   | CUST_CITY   | WORKING_AREA | CUST_COUNTRY | GRADE | OPENING_AMT | RECEIVE_AMT | PAYMENT_AMT |OUTSTANDING_AMT| PHONE_NO     | AGENT_CODE |
-+-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+
-| C00013    | Holmes      | London      | London       | UK           |     2 |     6000.00 |     5000.00 |     7000.00 |       4000.00 | BBBBBBB      | A003       |
-| C00001    | Micheal     | New York    | New York     | USA          |     2 |     3000.00 |     5000.00 |     2000.00 |       6000.00 | CCCCCCC      | A008       |
-| C00020    | Albert      | New York    | New York     | USA          |     3 |     5000.00 |     7000.00 |     6000.00 |       6000.00 | BBBBSBB      | A008       |
-For example:
-
-##### Test	
-SELECT * FROM customer WHERE cust_country='UK';
-##### Result
-CUST_CODE   CUST_NAME   CUST_CITY   WORKING_AREA  CUST_COUNTRY  GRADE       OPENING_AMT  RECEIVE_AMT  PAYMENT_AMT  OUTSTANDING_AMT  PHONE_NO    AGENT_CODE
-----------  ----------  ----------  ------------  ------------  ----------  -----------  -----------  -----------  ---------------  ----------  ----------
-C00013      Holmes      London      London        UK            2           6000         5000         7000         4000             BBBBBBB     A003
-C00024      Cook        London      London        UK            2           4000         9000         7000         6000             FSDDSDF     A006
-C00015      Stuart      London      London        UK            1           6000         8000         3000         11000            GFSGERS     A003
-C00023      Karl        London      London        UK            0           4000         6000         7000         3000             AAAABAA     A006
-C00010      Charles     Hampshair   Hampshair     UK            3           6000         4000         5000         5000             MMMMMMM     A009
-CUST_CODE   CUST_NAME   CUST_CITY   WORKING_AREA  CUST_COUNTRY  GRADE       OPENING_AMT  RECEIVE_AMT  PAYMENT_AMT  OUTSTANDING_AMT  PHONE_NO    AGENT_CODE
-----------  ----------  ----------  ------------  ------------  ----------  -----------  -----------  -----------  ---------------  ----------  ----------
-C00010      Charles     Hampshair   Hampshair     UK            3           6000         4000         5000         5000             MMMMMMM     A009
-
-#### Code:
-```
-DELETE FROM Customer
-WHERE CUST_CITY LIKE 'L%';
+**Program:**
+```sql
+SELECT *
+FROM salesman
+WHERE commission BETWEEN 0.12 AND 0.14;
 ```
 
 **Output:**
-![alt text](op7.png)
+
+![image](https://github.com/user-attachments/assets/2806ae32-e7e5-4ef6-b189-38aaac0939fa)
+
 
 **Question 8**
+---
+![image](https://github.com/user-attachments/assets/fc2bf715-a56f-4e11-869e-26b82b2cae5b)
 
-Write a SQL query to Delete customers with 'GRADE' 3 or 'AGENT_CODE' 'A008' whose 'OUTSTANDING_AMT' is less than 5000
-
-Sample table: Customer
-
-+-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+  
-|CUST_CODE  | CUST_NAME   | CUST_CITY   | WORKING_AREA | CUST_COUNTRY | GRADE | OPENING_AMT | RECEIVE_AMT | PAYMENT_AMT |OUTSTANDING_AMT| PHONE_NO     | AGENT_CODE |
-+-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+
-| C00013    | Holmes      | London      | London       | UK           |     2 |     6000.00 |     5000.00 |     7000.00 |       4000.00 | BBBBBBB      | A003       |
-| C00001    | Micheal     | New York    | New York     | USA          |     2 |     3000.00 |     5000.00 |     2000.00 |       6000.00 | CCCCCCC      | A008       |
-| C00020    | Albert      | New York    | New York     | USA          |     3 |     5000.00 |     7000.00 |     6000.00 |       6000.00 | BBBBSBB      | A008       |
-For example:
-
-##### Test	
-select changes();
-##### Result
-changes()
-----------
-1
-
-#### Code:
-```
-DELETE FROM Customer
-WHERE (GRADE=3 OR AGENT_CODE='A008') AND OUTSTANDING_AMT<5000
+**Program:**
+```sql
+DELETE FROM customer
+WHERE cust_country='India' AND cust_city!='Chennai';
 ```
 
 **Output:**
-![alt text](op8.png)
+
+![image](https://github.com/user-attachments/assets/54786eb0-8242-4671-9fdc-283b3a674fa8)
+
 
 **Question 9**
+---
+![image](https://github.com/user-attachments/assets/2fe4b958-a9cd-4df3-abdc-7e1f005d1ec3)
 
-Write a SQL query to Delete all Doctors whose Specialization is either 'Pediatrics' or 'Cardiology' and Last Name is Brown.
-
-Sample table: Doctors
-
-attributes : doctor_id, first_name, last_name, specialization
-For example:
-
-##### Test	
-SELECT * FROM doctors;
-##### Result
-doctor_id   first_name  last_name   specialization
-----------  ----------  ----------  --------------
-1           John        Smith       Cardiology
-2           Emily       Johnson     Orthopedics
-3           Michael     Brown       Pediatrics
-doctor_id   first_name  last_name   specialization
-----------  ----------  ----------  --------------
-1           John        Smith       Cardiology
-2           Emily       Johnson     Orthopedics
-
-#### Code:
-```
-DELETE FROM Doctors
-WHERE specialization IN ('Pediatrics','Cardiology') AND last_name='Brown'
+**Program:**
+```sql
+DELETE FROM Customer
+WHERE WORKING_AREA='New York';
 ```
 
 **Output:**
-![alt text](op9.png)
+
+![image](https://github.com/user-attachments/assets/723c3a6c-d418-4a72-ba27-683bb20bb4dc)
+
 
 **Question 10**
+---
+![image](https://github.com/user-attachments/assets/9c73c386-b78e-44da-a9f7-4679aa3d052b)
 
-Write a SQL query to Delete customers whose 'GRADE' is greater than 2 and have a 'PAYMENT_AMT' less than the average 'PAYMENT_AMT' for all customers, or whose 'OUTSTANDING_AMT' is greater than 8000:
-
-Sample table: Customer
-
-+-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+  
-|CUST_CODE  | CUST_NAME   | CUST_CITY   | WORKING_AREA | CUST_COUNTRY | GRADE | OPENING_AMT | RECEIVE_AMT | PAYMENT_AMT |OUTSTANDING_AMT| PHONE_NO     | AGENT_CODE |
-+-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+
-| C00013    | Holmes      | London      | London       | UK           |     2 |     6000.00 |     5000.00 |     7000.00 |       4000.00 | BBBBBBB      | A003       |
-| C00001    | Micheal     | New York    | New York     | USA          |     2 |     3000.00 |     5000.00 |     2000.00 |       6000.00 | CCCCCCC      | A008       |
-| C00020    | Albert      | New York    | New York     | USA          |     3 |     5000.00 |     7000.00 |     6000.00 |       6000.00 | BBBBSBB      | A008       |
-For example:
-
-##### Test	
-select changes();
-##### Result
-changes()
-----------
-12
-
-#### Code:
-```
-DELETE FROM Customer
-WHERE (GRADE>2 AND PAYMENT_AMT<(SELECT AVG(PAYMENT_AMT) FROM Customer)) OR OUTSTANDING_AMT>8000;
+**Program:**
+```sql
+UPDATE Suppliers
+SET address='58 Lakeview, Magnolia'
+WHERE supplier_id=5;
 ```
 
 **Output:**
-![alt text](op10.png)
+
+![image](https://github.com/user-attachments/assets/4c7d2cb5-8f25-4b71-937b-3622dd93660c)
+
 
 ## RESULT
 Thus, the SQL queries to implement DML commands have been executed successfully.
+
 
 ### Module 2 Result:
 <img width="1017" height="72" alt="image" src="https://github.com/user-attachments/assets/489d76be-07ac-443f-bec6-bdbda5a30bf4" />
